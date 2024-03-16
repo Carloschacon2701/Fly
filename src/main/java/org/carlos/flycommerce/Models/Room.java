@@ -26,6 +26,8 @@ public class Room {
     @JoinColumn(name = "room_type_id")
     private RoomType roomType;
 
+    private Integer quantity;
+
     private String name;
 
     private String description;

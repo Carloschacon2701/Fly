@@ -28,7 +28,11 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    
+    @OneToMany(mappedBy = "reservation")
+    private List<ReservationStatus> reservationStatus;
 
+    private Integer days;
 
     private Date checkIn;
 

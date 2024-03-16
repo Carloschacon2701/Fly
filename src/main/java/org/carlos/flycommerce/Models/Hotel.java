@@ -19,7 +19,7 @@ public class Hotel {
 
     @ManyToOne
     @JoinColumn(name = "city_id")
-    private City city_id;
+    private City city;
 
     @ManyToOne
     @JoinColumn(name = "branch_id")

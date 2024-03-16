@@ -23,5 +23,11 @@ public class Branch {
 
     private String name;
 
+    private String phone;
+
+    private String email;
+
+    private String description;
+
     private byte[] logo;
 }

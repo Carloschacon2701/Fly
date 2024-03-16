@@ -21,5 +21,5 @@ public class City {
 
     @ManyToOne
     @JoinColumn(name = "country_id")
-    private Country country_id;
+    private Country country;
 }

@@ -2,12 +2,8 @@ package org.carlos.flycommerce.Seed;
 
 
 import lombok.RequiredArgsConstructor;
-import org.carlos.flycommerce.Models.Gender;
-import org.carlos.flycommerce.Models.Role;
-import org.carlos.flycommerce.Models.User;
-import org.carlos.flycommerce.Repository.GenderRepository;
-import org.carlos.flycommerce.Repository.RoleRepository;
-import org.carlos.flycommerce.Repository.UserRepository;
+import org.carlos.flycommerce.Models.*;
+import org.carlos.flycommerce.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +21,16 @@ public class Seed {
     private final GenderRepository genderRepository;
 
     private final RoleRepository roleRepository;
+
+    private final HotelRepository hotelRepository;
+
+    private final RoomTypeRepository roomTypeRepository;
+
+    private final RoomRepository roomRepository;
+
+    private final CountryRepository countryRepository;
+
+    private final CityRepository cityRepository;
 
     private final Map<Integer, Gender> genders = Map.of(
             1, Gender.builder()
@@ -60,6 +66,45 @@ public class Seed {
                     .gender(genders.get(2)).build()
     );
 
+    private final Map<Integer, Country> countries = Map.of(
+            1, Country.builder()
+                    .name("Costa Rica")
+                    .build(),
+            2, Country.builder()
+                    .name("Panama")
+                    .build()
+    );
+
+    private final Map<Integer, City> cities = Map.of(
+            1, City.builder()
+                    .name("San Jose")
+                    .country(countries.get(1))
+                    .build(),
+            2, City.builder()
+                    .name("Panama City")
+                    .country(countries.get(2))
+                    .build()
+    );
+
+    private final Map<Integer, Hotel> hotels = Map.of(
+            1, Hotel.builder()
+                    .name("Hotel 1")
+                    .address("Address 1")
+                    .city(cities.get(1))
+                    .address("Address 1")
+                    .stars(5)
+                    .phone("12345678")
+                    .build(),
+            2, Hotel.builder()
+                    .name("Hotel 2")
+                    .address("Address 2")
+                    .city(cities.get(2))
+                    .address("Address 2")
+                    .stars(5)
+                    .phone("12345678")
+                    .build()
+    );
+
     @Bean
     CommandLineRunner seedData(){
         return args -> {
@@ -81,6 +126,23 @@ public class Seed {
 
                 System.out.println("User " + user.getEmail() + " saved");
             });
+
+            countries.forEach((id, country) -> {
+                countryRepository.save(country);
+                System.out.println("Country " + country.getName() + " saved");
+            });
+
+            cities.forEach((id, city) -> {
+                cityRepository.save(city);
+                System.out.println("City " + city.getName() + " saved");
+            });
+
+            hotels.forEach((id, hotel) -> {
+                hotelRepository.save(hotel);
+                System.out.println("Hotel " + hotel.getName() + " saved");
+            });
+
+            System.out.println("Data seeded");
 
         };
     }
