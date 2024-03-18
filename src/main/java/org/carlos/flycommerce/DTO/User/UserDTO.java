@@ -1,7 +1,7 @@
 package org.carlos.flycommerce.DTO.User;
 
-import org.carlos.flycommerce.Models.Gender;
-import org.carlos.flycommerce.Models.Role;
+import org.carlos.flycommerce.Models.MySql.Gender;
+import org.carlos.flycommerce.Models.MySql.Role;
 
 import java.util.Date;
 

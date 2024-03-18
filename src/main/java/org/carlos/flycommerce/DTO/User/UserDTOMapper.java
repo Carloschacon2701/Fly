@@ -1,6 +1,6 @@
 package org.carlos.flycommerce.DTO.User;
 
-import org.carlos.flycommerce.Models.User;
+import org.carlos.flycommerce.Models.MySql.User;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;

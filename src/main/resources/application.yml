@@ -12,6 +12,14 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
+  data:
+    mongodb:
+      username: myuser
+      password: secret
+      host: localhost
+      port: 27017
+      database: chat_db
+      authentication-database: admin
 
   application:
     name: fly-ecommerce
